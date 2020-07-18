@@ -1,0 +1,13 @@
+{
+    "scripts": {
+        "build": "cross-env NODE_ENV=prod npm run lint && npm run lint:cached && ng build --prod",
+        "develop": "concurrently --raw \"npm:serve --silent\" \"npm:lint:watch --silent\"",
+        "lint": "concurrently --raw \"npm:lint:ts --silent\" \"npm:lint:js --silent\" \"npm:lint:scss --silent\"",
+        "lint:cached": "node \"scripts/lintCached.js\"",
+        "lint:js": "eslint ./*.js src/*.js src/app/**/*.js --no-error-on-unmatched-pattern",
+        "lint:scss": "stylelint src/**/*.scss --syntax scss --color --allow-empty-input",
+        "lint:ts": "eslint ./*.ts src/*.ts src/app/**/*.ts --no-error-on-unmatched-pattern",
+        "lint:watch": "node \"scripts/lintWatch.js\"",
+        "start": "npm run develop"
+    }
+}
